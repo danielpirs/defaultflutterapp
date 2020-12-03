@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'keys.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -102,12 +104,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
+              key: const Key(Keys.counterDisplay),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        key: const Key(Keys.counterButton),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),

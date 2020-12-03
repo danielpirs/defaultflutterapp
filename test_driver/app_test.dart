@@ -1,6 +1,6 @@
+import 'package:defaultflutterapp/keys.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
-
 
 void main() {
   FlutterDriver driver;
@@ -22,5 +22,19 @@ void main() {
     expect(health.status, HealthStatus.ok);
   });
 
- 
+  test('Increase counter', () async {
+    final counterButton = find.byValueKey(Keys.counterButton);
+    final counterDisplay = find.byValueKey(Keys.counterDisplay);
+
+    await driver.tap(counterButton);
+    final firstnumber = await driver.getText(counterDisplay);
+
+    expect(int.parse(firstnumber), 1);
+
+    await driver.tap(counterButton);
+    await driver.tap(counterButton);
+    final secondnumber = await driver.getText(counterDisplay);
+
+    expect(int.parse(secondnumber), 3);
+  });
 }
